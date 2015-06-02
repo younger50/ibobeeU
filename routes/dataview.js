@@ -23,7 +23,7 @@ router.get('/db', function (request, response) {
   });
 });
 
-// POST user given data into db
+// POST add user given data into db
 router.post('/db/add', function(request, response){
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     var date = new Date();
@@ -38,7 +38,27 @@ router.post('/db/add', function(request, response){
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.send(result.rows); }
+       { response.send("Add:"+words); }
+    });
+  });
+});
+
+// POST delete user given data from db
+router.post('/db/del', function(request, response){
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    var date = new Date();
+    var timestamp = date.getTime();
+    var words = request.body.words;
+    console.log(words);
+    // injection char filter
+    words = words.replace(/['"]/g, "");
+    console.log(words);
+    client.query('DELETE FROM test_table WHERE Info=\''+words+'\';', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send("Del:"+words); }
     });
   });
 });

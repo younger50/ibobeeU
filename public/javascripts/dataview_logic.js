@@ -1,13 +1,25 @@
 $(document).ready(function () {
 	$("#dataView1").html("test");
 	$("#btnAdd").click( function(){
-		console.log($("#dataAdd").val());
+		console.log($("#dataInfo").val());
 		$.post("/data/db/add",
 			{
-				words:""+$("#dataAdd").val()
+				words:""+$("#dataInfo").val()
 			}, 
 			function(data,status){
 				$("#dataView1").html("db add finisehed");
+				console.log(data);
+			}
+		);
+	});
+	$("#btnDel").click( function(){
+		console.log($("#dataInfo"));
+		$.post("/data/db/del",
+			{
+				words:""+$("#dataInfo").val()
+			}, 
+			function(data,status){
+				$("#dataView1").html("db del finisehed");
 				console.log(data);
 			}
 		);
