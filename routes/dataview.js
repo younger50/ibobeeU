@@ -45,7 +45,7 @@ router.get('/db/insert_into', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.send(result.rows); }
+       { response.send(JSON.stringify(result.rows)); }
     });
   });
 });
