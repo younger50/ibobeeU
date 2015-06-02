@@ -2,11 +2,16 @@
 <html>
   <head>
     <title><%= title %></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/javascripts/dataview_logic.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
   	<% include partial/header %>
     <h1><%= title %></h1>
     <p>Database view</p>
+    <button id="btn1">Add New</button>
+    <button id="btnview">View All</button>
+    <div id="dataView1"></div>
   </body>
 </html>
