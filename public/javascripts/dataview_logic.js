@@ -1,13 +1,14 @@
 $(document).ready(function () {
 	$("#dataView1").html("test");
 	$("#btnAdd").click( function(){
+		console.log($("#dataAdd").val());
 		$.post("/data/db/add",
 			{
-				words:$("#dataAdd").value;
+				words:""+$("#dataAdd").val()
 			}, 
-			function(data){
+			function(data,status){
 				console.log(data)
-			};
+			}
 		);
 	});
 	$("#btnView").click( function (){

@@ -29,8 +29,9 @@ router.post('/db/add', function(request, response){
   var timestamp = date.getTime();
   var words = request.body.words;
   console.log(words);
-  words.replace(/['"]/g, "  ");
+  words = words.replace(/['"]/g, "");
   console.log(words);
+  response.send('hi');
 });
 
 /*
