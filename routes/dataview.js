@@ -6,7 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   date = new Date();
   res.render('dataview', {
-  	title:'Data View'
+  	title:'Database'
   });
 });
 
