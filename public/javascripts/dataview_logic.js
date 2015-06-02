@@ -7,7 +7,8 @@ $(document).ready(function () {
 				words:""+$("#dataAdd").val()
 			}, 
 			function(data,status){
-				console.log(data)
+				$("#dataView1").html("db add finisehed");
+				console.log(data);
 			}
 		);
 	});
