@@ -25,13 +25,22 @@ router.get('/db', function (request, response) {
 
 // POST user given data into db
 router.post('/db/add', function(request, response){
-  var date = new Date();
-  var timestamp = date.getTime();
-  var words = request.body.words;
-  console.log(words);
-  words = words.replace(/['"]/g, "");
-  console.log(words);
-  response.send('hi');
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    var date = new Date();
+    var timestamp = date.getTime();
+    var words = request.body.words;
+    console.log(words);
+    // injection char filter
+    words = words.replace(/['"]/g, "");
+    console.log(words);
+    client.query('INSERT INTO test_table ( Id, Info) VALUES ( \'Timestamp'+timestamp+'\', \''+words+'\');', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send(result.rows); }
+    });
+  });
 });
 
 /*
