@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var dbviews = require('./routes/dataview');
+//var dbviews = require('./routes/dataview');
+var dbviews = require('./routes/dbmongolab');
 
 var app = express();
 
