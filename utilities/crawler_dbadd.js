@@ -13,25 +13,8 @@ var fs = require('fs');
 var utf8 = require('utf8');
 var crlf = require('crlf');
 
-/*
-function dbinsert_w(words){
-  request( 
-    { 
-      url: api_url, 
-      method: "POST", 
-      json: {"words":words}
-    }, 
-    function (error, response, body) {
-      console.log(body);
-  });
-}
-
-
-// db presure test
-for(i=0;i<500;i++){
-	dbinsert_w("younger_testing"+i.toString());
-}
-*/
+// keep json document as global
+var lines;
 
 // temple load test
 function dbinsert_temple( address, area, city, deity, latitude, longitude, name, religion, temple_id){
@@ -57,11 +40,45 @@ function dbinsert_temple( address, area, city, deity, latitude, longitude, name,
   });
 }
 
+function temple_add_callback( lines, i){
+	if( i<lines.length ){
+		var line = lines[i];
+		//console.log(""+i+":"+lines[i]);
+		line = line.replace(/NumberInt\(/g," ");
+		line = line.replace(/\)/g," ");
+		console.log("===============");
+		if(line!=""){
+			var doc = JSON.parse("["+line+"]");
+			console.log(doc);
+			dbinsert_temple(
+		      	address=doc[0].address,
+		      	area=doc[0].area,
+		      	city=doc[0].city,
+		      	deity=doc[0].deity,
+		      	latitude=doc[0].latitude,
+		      	longitude=doc[0].longitude,
+		      	name=doc[0].name,
+		      	religion=doc[0].religion,
+		      	temple_id=doc[0].temple_id
+			);
+		}
+		console.log("---------------");
+		setTimeout( function (){ temple_add_callback( lines, i+1)}, 50); // delay add to avoid db connection limits
+		return;
+	}
+	else{
+		console.log(lines.length);
+		return;
+	}
+}
+
 function temple_json_load(filename){
 	fs.readFile( filename, 'utf8', function (err, data){
 		//console.log(data);
-		var lines = data.split("\n");
-		var i;
+		lines = data.split("\n");
+		//use recursive callback instead of loop to guarentee dealy happen and variable passing
+		temple_add_callback( lines, 0);
+		/*
 		for ( i = lines.length - 1; i >= 0; i--) {
 			var line = lines[i];
 			line = line.replace(/NumberInt\(/g," ");
@@ -69,9 +86,11 @@ function temple_json_load(filename){
 			console.log("===============");
 			console.log(line);			
 			if(line!=""){
-				var doc = JSON.parse("["+line+"]");
-				console.log(doc[0]["_id"]);
-				setTimeout(function(){
+				// load as json and add to remote mongolab db
+				var doct = JSON.parse("["+line+"]");
+				console.log(doct[0]["_id"]);
+				setTimeout( function(){
+					var doc = doct;
 					dbinsert_temple(
 				      	address=doc[0].address,
 				      	area=doc[0].area,
@@ -83,22 +102,44 @@ function temple_json_load(filename){
 				      	religion=doc[0].religion,
 				      	temple_id=doc[0].temple_id
 					);
-				}, 1+i*100);
+				}, 1+i*10); // delay add to avoid db connection limits
 
 			}
 			console.log("---------------");
 		};
 		console.log(lines.length);
+		*/
 	});
 
 }
+
+// load
+temple_json_load("temple.json");
+
 /*
-//temple_json_load("dbtest.json");
+//solve CR/LF parsing problem
 crlf.set(__dirname + '/temple.json', 'CRLF', function(err, endingType) {
   console.log(endingType); // LF 
   // file was using LF and now uses CRLF 
 });
 */
 
-// load
-temple_json_load("temple.json");
+/*
+function dbinsert_w(words){
+  request( 
+    { 
+      url: api_url, 
+      method: "POST", 
+      json: {"words":words}
+    }, 
+    function (error, response, body) {
+      console.log(body);
+  });
+}
+
+
+// db presure test
+for(i=0;i<500;i++){
+	dbinsert_w("younger_testing"+i.toString());
+}
+*/
