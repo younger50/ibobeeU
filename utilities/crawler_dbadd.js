@@ -13,7 +13,7 @@ var fs = require('fs');
 var utf8 = require('utf8');
 var crlf = require('crlf');
 
-
+/*
 function dbinsert_w(words){
   request( 
     { 
@@ -31,8 +31,8 @@ function dbinsert_w(words){
 for(i=0;i<500;i++){
 	dbinsert_w("younger_testing"+i.toString());
 }
+*/
 
-/*
 // temple load test
 function dbinsert_temple( address, area, city, deity, latitude, longitude, name, religion, temple_id){
   request( 
@@ -60,23 +60,45 @@ function dbinsert_temple( address, area, city, deity, latitude, longitude, name,
 function temple_json_load(filename){
 	fs.readFile( filename, 'utf8', function (err, data){
 		//console.log(data);
-		var lines = data.split("\r\n|\r|\n");
+		var lines = data.split("\n");
 		var i;
 		for ( i = lines.length - 1; i >= 0; i--) {
 			var line = lines[i];
+			line = line.replace(/NumberInt\(/g," ");
+			line = line.replace(/\)/g," ");
+			console.log("===============");
 			console.log(line);			
 			if(line!=""){
 				var doc = JSON.parse("["+line+"]");
-				console.log("===============");
 				console.log(doc[0]["_id"]);
-				console.log("---------------");
+				setTimeout(function(){
+					dbinsert_temple(
+				      	address=doc[0].address,
+				      	area=doc[0].area,
+				      	city=doc[0].city,
+				      	deity=doc[0].deity,
+				      	latitude=doc[0].latitude,
+				      	longitude=doc[0].longitude,
+				      	name=doc[0].name,
+				      	religion=doc[0].religion,
+				      	temple_id=doc[0].temple_id
+					);
+				}, 1+i*100);
+
 			}
+			console.log("---------------");
 		};
 		console.log(lines.length);
 	});
 
 }
-
+/*
 //temple_json_load("dbtest.json");
-//temple_json_load("temple.json");
+crlf.set(__dirname + '/temple.json', 'CRLF', function(err, endingType) {
+  console.log(endingType); // LF 
+  // file was using LF and now uses CRLF 
+});
 */
+
+// load
+temple_json_load("temple.json");
