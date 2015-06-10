@@ -9,7 +9,7 @@ var router = express.Router();
 
 
 // POST add many users given data into db for test by Sandy 2015/06/10
-router.get('/db/addMany', function (req, res){
+router.get('/addMany', function (req, res, next){
 	console.log("this is a test!!!");
   
   for(var i=0;i<10;i++){
