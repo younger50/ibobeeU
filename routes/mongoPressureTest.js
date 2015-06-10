@@ -23,13 +23,13 @@ router.get('/addMany', function (req, res, next){
 	  // requset POST to mlab API
 	  request( 
 		{ 
-		  url: inst_api_url, 
+		  url: api_url, 
 		  method: "POST", 
 		  json: {"words":words}
 		}, 
 		function (error, response, body) {
-		console.log(body);
-		res.send(body);
+		  console.log(body);
+		  res.send(body);
 	  });
   }
 });
