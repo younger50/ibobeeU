@@ -12,7 +12,7 @@ var router = express.Router();
 router.get('/addMany', function (req, res, next){
 	console.log("this is a test!!!");
   
-  for(var i=0;i<10;i++){
+  for(var i=10;i<300;i++){
 	  var date = new Date();
 	  var timestamp = date.getTime();
 	  var words = "test"+i;
