@@ -9,4 +9,11 @@ router.get('/', function(req, res, next) {
   	timenow: date.toString() });
 });
 
+router.get('/1', function(req, res, next) {
+	//res.send("hi");
+	var options = {root: __dirname + '/../views/'}
+	var fileName = 'index1.html';
+	res.sendFile( fileName, options);
+});
+
 module.exports = router;
