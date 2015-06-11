@@ -56,7 +56,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
                         <a href="#">Services</a>
@@ -96,8 +96,11 @@
                             <!--<span class="input-group-addon">
                                 <input type="radio" aria-label="...">
                              </span>-->
-                            <input type="text" class="form-control" id="exampleInputName2">
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="sortname">
+                            </div>
                          </div>
+                         <button id="sortsrch1" type="submit" class="btn btn-default">搜索</button> 
                     </div>
                 
 
@@ -107,27 +110,31 @@
                             <!--<span class="input-group-addon">
                                 <input type="radio" aria-label="...">
                              </span>-->
-                          
-                            <input type="text" class="form-control" id="exampleInputName2">
+                            <div class="col-md-3">
+                                <input id="sorttemple" type="text" class="form-control">
+                            </div>
                         </div>
+                        <button id="sortsrch2" type="submit" class="btn btn-default">搜索</button> 
                     </div>
 
                     <div class="form-group">
                         <label for="region">教派</label>
+                        
                         <div class="input-group">
-                           <!-- <span class="input-group-addon">
-                                <input type="radio" aria-label="...">
-                             </span>-->
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                             
-                            <select class="selectpicker">
-                                <option>道教</option>
-                                <option>佛教</option>
-                                <option>一貫道</option>
-                                <option>基督教</option>
-                            </select>
+                                <select id="sortreligion" class="selectpicker">
+                                    <option>道教</option>
+                                    <option>佛教</option>
+                                    <option>一貫道</option>
+                                    <option>基督教</option>
+                                </select>
+                            
+                            </div>
+                             
                         </div>
-                        </div>
+                        <button id="sortsrch3" type="submit" class="btn btn-default">搜索</button> 
+                       
                         
                     </div>
 
@@ -149,7 +156,7 @@
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Taiwan Map</h3>
                     </div>
-                    <div class="panel-body">
+                    <div id="returnmap" class="panel-body">
                     Panel content
                     </div>
                 </div>
@@ -158,7 +165,7 @@
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">City and County</h3>
                     </div>
-                    <div class="panel-body">
+                    <div id="returncity" class="panel-body">
                         Panel content
                     </div>
                 </div>
@@ -167,7 +174,7 @@
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Region</h3>
                     </div>
-                    <div class="panel-body">
+                    <div id="returnregion" class="panel-body">
                         Panel content
                     </div>
                 </div>
@@ -176,7 +183,7 @@
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Religion (deity and temple)</h3>
                     </div>
-                    <div class="panel-body">
+                    <div id="returnreligion" class="panel-body">
                         Panel content
                     </div>
                 </div>
@@ -185,7 +192,7 @@
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Related names</h3>
                     </div>
-                    <table class="table">
+                    <table id="returnnames" class="table">
 
                         <tr>
                             <td>觀音</td>
@@ -200,14 +207,14 @@
                     </table>
                 </div>
 
-                <div class="panel panel-danger">
+                <!--<div class="panel panel-danger">
                     <div class="panel-heading"  style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Related deities</h3>
                     </div>
                     <div class="panel-body">
                         Panel content
                     </div>
-                </div>
+                </div>-->
 
                 <a href="#">
                     <img class="img-responsive portfolio-item" src="http://placehold.it/1200x200" alt="">

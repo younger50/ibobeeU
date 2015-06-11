@@ -9,10 +9,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 //var dbviews = require('./routes/dataview');
 var dbviews = require('./routes/dbmongolab');
-var dbpressureTest = require('./routes/mongoPressureTest');
+//var dbpressureTest = require('./routes/mongoPressureTest');
+var dbtemple = require('./routes/dbtemple');
 
 var app = express();
-
+ 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -26,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/data', dbviews);
-app.use('/pressureTest', dbpressureTest);
+app.use('/data/temple', dbtemple);
+//app.use('/pressureTest', dbpressureTest);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

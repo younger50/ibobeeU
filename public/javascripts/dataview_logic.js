@@ -30,17 +30,4 @@ $(document).ready(function () {
 			console.log(data);
 		});
 	});
-	//Search Temple Keyword
-	$("#templesrch2").click( function(){
-		
-		$.post("/data/temple/findkey",
-			{
-				words:""+$("#templekey").val()
-			}, 
-			function(data,status){
-				$("#dataView1").html(data);
-				console.log(data);
-			}
-		);
-	});
 });
