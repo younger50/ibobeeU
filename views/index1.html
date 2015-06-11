@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>有拜有保庇</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-select.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-datepicker.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap-select.js"></script>
+    <script src="/javascripts/bootstrap-datepicker.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<img src="logo.jpg">-->
+                <!--<a class="navbar-brand" href="#">Start Bootstrap</a>-->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="test.html">後分類</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">有拜有保庇
+                    <small>台灣廟宇神明資料庫</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <!--MAPPPPPPPPPPP-->
+            <div class="col-md-8">
+                <!--<img class="img-responsive" src="http://placehold.it/750x500" alt="">-->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.4929148816173!2d121.53975200000002!3d25.017341000000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a989fe322ea9%3A0x21750404ee1d7f66!2z6Ie654Gj5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1432052823392" width="630" height="400" frameborder="0" style="border:0"></iframe>
+            </div>
+
+            <!--SEARCH TAB-->
+            <div class="col-md-4">
+
+                <div role="tabpanel">
+                    
+                     <!-- Nav tabs -->
+                    <div style="background-color: #a94442; border-radius: 4px;">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active" style="width:33.3333333%; text-align: center;"><a href="#temple" aria-controls="temple" role="tab" data-toggle="tab">廟宇</a></li>
+                            <li role="presentation" style="width:33.3333333%; text-align: center;"><a href="#festival" aria-controls="festival" role="tab" data-toggle="tab">祭典</a></li>
+                            <li role="presentation" style="width:33.3333333%; text-align: center;"><a href="#deity" aria-controls="deity" role="tab" data-toggle="tab">神明</a></li>
+                        </ul>
+                    </div>
+               
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                       
+                        <!--廟宇搜索 Tab-->
+                        <div role="tabpanel" class="tab-pane active" id="temple">
+                            
+                            <form>
+                                <!--<div class="form-group">-->
+                                <label for="Temple" class="col-md control-label" style="padding-top:10px; padding-bottom:5px;">輸入地址／關鍵字</label>
+                                
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input id="templeadrs" type="text" class="form-control input-sm" placeholder="地址">
+                                    </div>
+                                    <button id="templesrch1" type="submit" class="btn btn-default">搜索</button> 
+                                </form>
+
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <input id="templekey" type="text" class="form-control input-sm" placeholder="關鍵字">
+                                    </div>
+                                    <button id="templesrch2" type="submit" class="btn btn-default">搜索</button> 
+                                </form>
+                                                                   
+                            </form>
+
+                            <div class="form-group">
+                                <label for="area" class="col-md control-label" style="padding-top:10px" >以地區搜索</label>
+                            </div>
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="region">City</label>
+
+                                    <div class="col-sm-10">
+                                        <select id="templecity" class="selectpicker">
+                                            <option>臺北市</option>
+                                            <option>新北市</option>
+                                            <option>桃園市</option>
+                                            <option>臺中市</option>
+                                            <option>臺南市</option>
+                                            <option>高雄市</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                          
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="city">Area</label>
+                              
+                                   <div class="col-sm-10">
+                                        <select id="templearea" class="selectpicker">
+                                            <option>大安區</option>
+                                            <option>信義區</option>
+                                            <option>萬華區</option>
+                                            <option>南港區</option>
+                                            <option>松山區</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </form>
+                            <br>
+                            
+                            <button id="templesrch3" type="submit" class="btn btn-default" style="text-align:right">搜索</button> 
+
+                            <!-- 地址 ID: templeadrs
+                                 關鍵字 ID: templekey 
+                                 城市 ID: templecity
+                                 地區 ID: templearea
+                                 搜索地址 ID: templesrch1
+                                 搜索關鍵字 ID: templesrch2
+                                 搜索地區 ID: templesrch3
+                            -->
+                                                                                                 
+                        </div><!--End 廟宇-->
+
+
+                        <!--祭典搜索 TAB-->
+                        <div role="tabpanel" class="tab-pane" id="festival">
+                            
+                            <form>
+                                <div class="form-group">
+                                    <label for="Temple" class="col-md control-label" style="padding-top:10px; padding-bottom:5px;">輸入關鍵字</label>
+                                    <input id="evntkey" type="text" class="form-control input-sm" placeholder="關鍵字">
+                                    <button id="evntsrch1" type="submit" class="btn btn-default" style="text-align:right">搜索</button> 
+                                </div>                                      
+                            </form>
+
+                            <div class="form-group">
+                                <label for="area" class="col-md control-label" style="padding-top:10px" >以日期搜索</label>
+                            </div>
+
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="startdate">從</label>
+                                    <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                      <input id="evntdate1" data-provide="datepicker" class="span2" size="16" type="text">
+                                      <span class="add-on"><i class="icon-th"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="enddate">到</label>
+                                    <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                      <input id="evntdate2" data-provide="datepicker" class="span2" size="16" type="text">
+                                      <span class="add-on"><i class="icon-th"></i></span>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <button id="evntsrch2" type="submit" class="btn btn-default" style="text-align:right">搜索</button> 
+
+                            <div class="form-group">
+                                <label for="area" class="col-md control-label" style="padding-top:10px" >或可依下方時間軸搜索</label>
+                            </div>
+
+                            <br>
+                                
+                           
+                            <!-- 關鍵字 ID: evntkey 
+                                 開始日期 ID: evntdate1
+                                 結束日期 ID: evntdate2
+                                 搜索關鍵字 ID: evntsrch1
+                                 搜索 ID: evntsrch2
+                            -->
+
+                        </div><!--End 祭典-->
+
+                        <!--神明搜索 START-->
+                        <div role="tabpanel" class="tab-pane" id="deity">
+                            <form>
+                                <div class="form-group">
+                                    <label for="Temple" class="col-md control-label" style="padding-top:10px; padding-bottom:5px;">輸入關鍵字</label>
+                                    <input id="dietykey" type="text" class="form-control input-sm" placeholder="關鍵字">
+                                    <button id="dietysrch1" type="submit" class="btn btn-default" style="text-align:right">搜索</button> 
+                                </div>
+                                                                  
+                            </form>
+
+                             <div class="form-group">
+                                    <label for="area" class="col-md control-label" style="padding-top:10px" >以情境搜尋</label>
+                            </div>
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <select id="deityscene" class="selectpicker">
+                                            <option>Scenario 1</option>
+                                            <option>Scenario 2</option>
+                                            <option>Scenario 3</option>
+                                            <option>Scenario 4</option>
+                                            <option>Scenario 5</option>
+                                            <option>Scenario 6</option>
+                                        </select>
+                                    </div>
+                               </div>
+                              
+                            </form>
+                            <button id="dietysrch2" type="submit" class="btn btn-default" style="text-align:right">搜索</button> 
+
+                            <br><br><br><br><br>
+
+                            <!--
+                            關鍵字 ID: dietykey
+                            情境 ID: deityscene
+                            搜索關鍵字 ID: dietysrch1
+                            搜索情境 ID: dietysrch2
+                            -->
+
+                        </div><!--End search by deity-->
+
+                    </div><!--END TAB PANES-->
+               
+                  
+                </div><!---END TAB PANEL-->
+            
+            </div><!--END SEARCH TAB-->
+
+        </div>
+        <!-- /.row -->
+        <br>
+        <!-- Related Projects Row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading" role="tab" id="headingOne" style="color: white; background-color: #a94442;">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">時間軸</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <a href="#">
+                                    <img class="img-responsive portfolio-item" src="http://placehold.it/1200x200" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+           
+
+        </div>
+        <!-- /.row -->
+
+        
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+  
+
+</body>
+
+</html>
