@@ -29,12 +29,22 @@
 
     <script src="/javascripts/logictest.js"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="/javascripts/map.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      #map-canvas {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
 
 </head>
 
@@ -64,7 +74,7 @@
                         <a href="test">後分類</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="individual">詳細介紹</a>
                     </li>
                 </ul>
             </div>
@@ -90,10 +100,7 @@
         <div class="row">
 
             <!--MAPPPPPPPPPPP-->
-            <div class="col-md-8">
-                <!--<img class="img-responsive" src="http://placehold.it/750x500" alt="">-->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.4929148816173!2d121.53975200000002!3d25.017341000000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a989fe322ea9%3A0x21750404ee1d7f66!2z6Ie654Gj5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1432052823392" width="630" height="400" frameborder="0" style="border:0"></iframe>
-            </div>
+            <div id="map-canvas" style="float:left;"></div>
 
             <!--SEARCH TAB-->
             <div class="col-md-4">
@@ -332,6 +339,17 @@
                 </div>
             </div>
         </footer>
+
+        <div id="result"></div>
+
+<!--<script>
+
+    // Store
+    sessionStorage.setItem("xcoor", "1");
+    // Retrieve
+    document.getElementById("result").innerHTML = sessionStorage["xcoor"];
+
+</script>-->
 
         <div id="dataView1"></div>
         <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
