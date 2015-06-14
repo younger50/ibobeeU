@@ -23,4 +23,11 @@ router.get('/test', function(req, res, next) {
 	res.sendFile( fileName, options);
 });
 
+router.get('/individual', function(req, res, next) {
+	//res.send("hi");
+	var options = {root: __dirname + '/../views/'}
+	var fileName = 'individual.html';
+	res.sendFile( fileName, options);
+});
+
 module.exports = router;
