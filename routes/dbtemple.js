@@ -13,5 +13,27 @@ router.get('/', function (req, res, next) {
   res.send("dbtmeple");
 });
 
+// POST db find by address
+router.post('/findadrs', function (req, res, next) {
+  date = new Date();
+  console.log(req.body);
+  res.send("dbtmeple findaddress");
+});
+
+
+// POST db find by key words
+router.post('/findkey', function (req, res, next) {
+  date = new Date();
+  console.log(req.body);
+  res.send("dbtmeple findbykey");
+});
+
+// POST db find by key area
+router.post('/findarea', function (req, res, next) {
+  date = new Date();
+  console.log(req.body);
+  res.send("dbtmeple findbyarea");
+});
+
 
 module.exports = router;

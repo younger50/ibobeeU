@@ -27,6 +27,8 @@
     <script src="/javascripts/bootstrap-select.js"></script>
     <script src="/javascripts/bootstrap-datepicker.js"></script>
 
+    <script src="/javascripts/logictest.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -122,14 +124,14 @@
                                     <div class="form-group">
                                         <input id="templeadrs" type="text" class="form-control input-sm" placeholder="地址">
                                     </div>
-                                    <button id="templesrch1" type="submit" class="btn btn-default">搜索</button> 
+                                    <button id="templesrch1" class="btn btn-default">搜索</button> 
                                 </form>
 
                                 <form class="form-inline">
                                     <div class="form-group">
                                         <input id="templekey" type="text" class="form-control input-sm" placeholder="關鍵字">
                                     </div>
-                                    <button id="templesrch2" type="submit" class="btn btn-default">搜索</button> 
+                                    <button id="templesrch2" class="btn btn-default">搜索</button> 
                                 </form>
                                                                    
                             </form>
@@ -172,7 +174,7 @@
                             </form>
                             <br>
                             
-                            <button id="templesrch3" type="submit" class="btn btn-default" style="text-align:right">搜索</button> 
+                            <button id="templesrch3" class="btn btn-default" style="text-align:right">搜索</button> 
 
                             <!-- 地址 ID: templeadrs
                                  關鍵字 ID: templekey 
@@ -334,7 +336,8 @@
 
     </div>
   
-
+    <div id="dataView1"></div>
+    
 </body>
 
 </html>

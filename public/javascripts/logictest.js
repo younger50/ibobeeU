@@ -60,7 +60,7 @@ $(document).ready(function () {
 		//console.log($("#dataInfo").val());
 		$.post("/data/events/daterange",
 			{
-				startdate:""+$("#evntdate1").val()
+				startdate:""+$("#evntdate1").val(),
 				enddate:""+$("#evntdate2").val()
 			}, 
 			function(data,status){
