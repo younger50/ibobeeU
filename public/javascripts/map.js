@@ -20,6 +20,7 @@ function update(map){
 	//send request with boundary, get array of temples. get temple coordinates
 	clear_markers(map);
 	console.log("update");
+	console.log(map.getBounds());
 	/*for(number of temples within boundary){
 		var lat, long;
 		var pos = new google.maps.LatLng(lat, long);
