@@ -16,15 +16,15 @@ router.get('/', function (req, res, next) {
 // POST db find by address
 router.post('/findadrs', function (req, res, next) {
   date = new Date();
-  console.log(req.body);
+  //console.log(req.body);
   words = req.body.words;
-  //res.send("dbtmeple findaddress");
-  q_url = api_raw_url+"?q="+JSON.stringify({"address":{$regex:".*"+words+".*"}})+"&apiKey="+api_key;
+  q_string = "{\"address\":{$regex:\".*"+words+".*\"}}";
+  q_url = api_raw_url+"?q="+q_string+"&apiKey="+api_key;
+  console.log(q_url);
+  // query monglab through url api
   request( 
     { 
-      url: q_url, 
-      method: "POST", 
-      json: {"words":words}
+      url: q_url
     }, 
     function (error, response, body) {
       console.log(body);
@@ -36,14 +36,15 @@ router.post('/findadrs', function (req, res, next) {
 // POST db find by key words
 router.post('/findkey', function (req, res, next) {
   date = new Date();
-  console.log(req.body);
-  //res.send("dbtmeple findbykey");
-  q_url = api_raw_url+"?q="+JSON.stringify({"name":{$regex:".*"+words+".*"}})+"&apiKey="+api_key;
+  //console.log(req.body);
+  words = req.body.words;
+  q_string = "{\"name\":{$regex:\".*"+words+".*\"}}";
+  q_url = api_raw_url+"?q="+q_string+"&apiKey="+api_key;
+  console.log(q_url);
+  // query monglab through url api
   request( 
     { 
-      url: q_url, 
-      method: "POST", 
-      json: {"words":words}
+      url: q_url
     }, 
     function (error, response, body) {
       console.log(body);
