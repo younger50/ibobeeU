@@ -1,7 +1,8 @@
 /*
 usage: 
 1.create a div whose id is named 'pano'
-2.call getStreetView(lat,lng) example: showStreetView(25.11617,121.8414007);
+2.call showStreetView(lat,lng) example: showStreetView(25.11617,121.8414007);
+3.include streetView.js
 Example: in other file
     <script src="./streetview.js"></script>
     <script>showStreetView(25.11617,121.8414007);</script>
