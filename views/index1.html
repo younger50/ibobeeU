@@ -116,25 +116,24 @@
                         <!--廟宇搜索 Tab-->
                         <div role="tabpanel" class="tab-pane active" id="temple">
                             
-                            <form>
-                                <!--<div class="form-group">-->
+                            <div class="form-group">
                                 <label for="Temple" class="col-md control-label" style="padding-top:10px; padding-bottom:5px;">輸入地址／關鍵字</label>
                                 
-                                <form class="form-inline">
+                                <form class="form-inline" target="dummyframe">
                                     <div class="form-group">
                                         <input id="templeadrs" type="text" class="form-control input-sm" placeholder="地址">
                                     </div>
                                     <button id="templesrch1" class="btn btn-default">搜索</button> 
                                 </form>
 
-                                <form class="form-inline">
+                                <form class="form-inline" target="dummyframe">
                                     <div class="form-group">
                                         <input id="templekey" type="text" class="form-control input-sm" placeholder="關鍵字">
                                     </div>
                                     <button id="templesrch2" class="btn btn-default">搜索</button> 
                                 </form>
                                                                    
-                            </form>
+                            </div>
 
                             <div class="form-group">
                                 <label for="area" class="col-md control-label" style="padding-top:10px" >以地區搜索</label>
@@ -334,10 +333,11 @@
             </div>
         </footer>
 
+        <div id="dataView1"></div>
+        <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
+
     </div>
-  
-    <div id="dataView1"></div>
-    
+
 </body>
 
 </html>
