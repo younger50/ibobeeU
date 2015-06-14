@@ -26,6 +26,8 @@
     <script src="/javascripts/bootstrap.min.js"></script>
     <script src="/javascripts/bootstrap-select.js"></script>
     <script src="/javascripts/bootstrap-datepicker.js"></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript' src="/javascripts/geomap.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,6 +57,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li>
+                        <img src="/images/icon.jpg" style="height: 60%; width:60%;margin-top: 3px;">
+                    </li>
+                    
                     <li>
                         <a href="/">首頁</a>
                     </li>
@@ -154,10 +160,14 @@
 
                  <div class="panel panel-danger">
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
-                        <h3 class="panel-title">Taiwan Map</h3>
+                        <h3 class="panel-title">台灣分佈</h3>
                     </div>
                     <div id="returnmap" class="panel-body">
-                    Panel content
+                        <script>
+                            var arr = [[300,'臺南市'],[100,'臺北市']];
+                            showGeomap(arr);
+                        </script>
+                        <div id='geomap'></div>
                     </div>
                 </div>
 
@@ -166,31 +176,57 @@
                         <h3 class="panel-title">City and County</h3>
                     </div>
                     <div id="returncity" class="panel-body">
-                        Panel content
+                       <label>臺南市：300</label>
+                       <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+                                
+                            </div>
+                        </div>
+
+                        <label>臺北市：100</label>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="panel panel-danger">
-                    <div class="panel-heading" style="color: white; background-color: #a94442;">
-                        <h3 class="panel-title">Region</h3>
-                    </div>
-                    <div id="returnregion" class="panel-body">
-                        Panel content
-                    </div>
-                </div>
 
                 <div class="panel panel-danger">
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Religion (deity and temple)</h3>
                     </div>
-                    <div id="returnreligion" class="panel-body">
-                        Panel content
-                    </div>
+                    <table id="returnreligion" class="table">
+                        <thead>
+                            <tr>
+                                <th>教派</th>
+                                <th>出現次數</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>佛教</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>道教</td>
+                                <td>19</td>
+                            </tr>
+                            <tr>
+                                <td>一貫道</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+
                 </div>
 
                 <div class="panel panel-danger">
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
-                        <h3 class="panel-title">Related names</h3>
+                        <h3 class="panel-title">類似名稱</h3>
                     </div>
                     <table id="returnnames" class="table">
 
@@ -215,11 +251,6 @@
                         Panel content
                     </div>
                 </div>-->
-
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/1200x200" alt="">
-                </a>
-            </div>
 
             <!--<div class="col-sm-3 col-xs-6">
                 <a href="#">
