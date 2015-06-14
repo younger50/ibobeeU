@@ -9,7 +9,7 @@ $(document).ready(function () {
 				words:""+$("#templeadrs").val()
 			}, 
 			function(data,status){
-				$("#dataView1").html("return by address");
+				$("#dataView1").html( data);
 				console.log(data);
 			}
 		);
@@ -22,7 +22,7 @@ $(document).ready(function () {
 				words:""+$("#templekey").val()
 			}, 
 			function(data,status){
-				$("#dataView1").html(data);
+				$("#dataView1").html( data);
 				console.log(data);
 			}
 		);
@@ -35,7 +35,7 @@ $(document).ready(function () {
 				words:""+$("#templearea").val()
 			}, 
 			function(data,status){
-				$("#dataView1").html("return by area");
+				$("#dataView1").html( data);
 				console.log(data);
 			}
 		);
