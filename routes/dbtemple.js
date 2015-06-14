@@ -76,7 +76,7 @@ router.post('/findkey', function (req, res, next) {
           item = body[i];
           //console.log(item);
           if(item.address){
-            if(item.address.indexOf(words)>-1){
+            if(item.name.indexOf(words)>-1){
               console.log(item);
             }
             else{
