@@ -1,18 +1,4 @@
-﻿/*
-usage: 
-1.create a div whose id is named 'geomap'
-2.call showGeomap(dataArray) 
-3.include geomap.js and https://www.google.com/jsapi
-Example: in other file
-  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-  <script type='text/javascript' src="./geomap.js"></script>
-  <script>
-    var arr = [['臺南市',300],['臺北市',100]];
-    showGeomap(arr);
-  </script>
-  <div id='geomap'></div>
-*/
-
+﻿
 
 var map={};
 setMap();
@@ -23,8 +9,8 @@ function showGeomap(arr){
   transformDataArr();
 }
 
-google.load('visualization', '1', {'packages': ['geomap']});
-google.setOnLoadCallback(drawMap);
+//google.load('visualization', '1', {'packages': ['geomap']});
+//google.setOnLoadCallback(drawMap);
 
 function drawMap() {
   var data = google.visualization.arrayToDataTable(dataArr);

@@ -119,11 +119,16 @@ $(document).ready(function () {
 
 				//update taiwan map
 				var cityCountArr=[];
+				var cityCountArr2=[];
                 for(var k in cityCount){
-                	cityCountArr.push([k,cityCount[k]]);	
+                	cityCountArr.push([k,cityCount[k]]);
+                	cityCountArr2.push([k,cityCount[k]]);	
                 }
+                console.log("cityCountArr:"+cityCountArr);
                 showGeomap(cityCountArr);
+                showChart(cityCountArr2);
                 drawMap();
+                drawBasic();
 
                 //update religions
                 religionHtml="<thead><tr><th>教派</th><th>出現次數</th></tr></thead><tbody>";
@@ -170,11 +175,16 @@ $(document).ready(function () {
 
 				//update taiwan map
 				var cityCountArr=[];
+				var cityCountArr2=[];
                 for(var k in cityCount){
-                	cityCountArr.push([k,cityCount[k]]);	
+                	cityCountArr.push([k,cityCount[k]]);
+                	cityCountArr2.push([k,cityCount[k]]);	
                 }
+                console.log("cityCountArr:"+cityCountArr);
                 showGeomap(cityCountArr);
+                showChart(cityCountArr2);
                 drawMap();
+                drawBasic();
 
                 //update religions
                 religionHtml="<thead><tr><th>教派</th><th>出現次數</th></tr></thead><tbody>";
@@ -211,11 +221,16 @@ $(document).ready(function () {
 				cityCount 		= requestArr[0];
 				//update taiwan map
 				var cityCountArr=[];
+				var cityCountArr2=[];
                 for(var k in cityCount){
-                	cityCountArr.push([k,cityCount[k]]);	
+                	cityCountArr.push([k,cityCount[k]]);
+                	cityCountArr2.push([k,cityCount[k]]);	
                 }
+                console.log("cityCountArr:"+cityCountArr);
                 showGeomap(cityCountArr);
+                showChart(cityCountArr2);
                 drawMap();
+                drawBasic();
 
 			}
 		);
