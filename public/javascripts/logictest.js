@@ -103,7 +103,7 @@ $(document).ready(function () {
 	$("#sortsrch1").click( function (){
 		console.log($("#sortname").val());
 
-		$.post("/test/data/postclassification/city",
+		$.post("/test/data/postclassification/deity",
 			{
 				words:""+$("#sortname").val()
 			}, 
