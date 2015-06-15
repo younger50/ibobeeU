@@ -20,7 +20,12 @@ router.post('/city', function(req,res,next){
 
 
 function findTempleByWords(words){
-  request({url:"http://www.csie.ntu.edu.tw/~b99902093/ibobeeu/phpMongo4.php?name="+encodeURI(words)},
+  //request({url:"http://www.csie.ntu.edu.tw/~b99902093/ibobeeu/phpMongo4.php?name="+encodeURI(words)},
+  collection  = "dbtemples";
+  query       = "{\"deity\":{\"\$regex\":\""+words+"\"}}"
+  php_db      = require('../utilities/php_db.js');
+  phpurl      = php_db.getURL(collection,query);
+  request({url:phpurl},
     function(error,response,body){
       if (!error && response.statusCode == 200) {
         temples = JSON.parse(body);
