@@ -133,8 +133,13 @@
                                 <select id="sortreligion" class="selectpicker">
                                     <option>道教</option>
                                     <option>佛教</option>
+                                    <option>理教</option>
+                                    <option>儒教</option>
                                     <option>一貫道</option>
-                                    <option>基督教</option>
+                                    <option>天帝教</option>
+                                    <option>天德教</option>
+                                    <option>彌勒大道</option>
+                                    <option>軒轅教</option>
                                 </select>
                             
                             </div>
@@ -194,7 +199,7 @@
                 </div>
 
 
-                <div class="panel panel-danger">
+                <div class="panel panel-danger" id="religionblock">
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">Religion (deity and temple)</h3>
                     </div>
@@ -225,22 +230,31 @@
 
                 </div>
 
-                <div class="panel panel-danger">
+                <div class="panel panel-danger" id="nameblock">
                     <div class="panel-heading" style="color: white; background-color: #a94442;">
                         <h3 class="panel-title">類似名稱</h3>
                     </div>
                     <table id="returnnames" class="table">
-
+                        <thead>
+                            <tr>
+                                <th>名稱</th>
+                                <th>出現次數</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td>觀音</td>
+                            <td>1</td>
                         </tr>
                         <tr>
                             <td>觀音娘娘</td>
+                            <td>4</td>
                         </tr>
                         <tr>
                             <td>觀音娘</td>
+                            <td>6</td>
                         </tr>
-                        
+                        </tbody>
                     </table>
                 </div>
 
