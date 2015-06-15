@@ -18,7 +18,6 @@ var map={};
 setMap();
 var dataArr;
 function showGeomap(arr){
-  console.log("showGeomap");
   dataArr=arr;
   swapArr(dataArr);
   transformDataArr();
@@ -28,7 +27,6 @@ google.load('visualization', '1', {'packages': ['geomap']});
 google.setOnLoadCallback(drawMap);
 
 function drawMap() {
-  console.log("drawMap");
   var data = google.visualization.arrayToDataTable(dataArr);
   var options = {};
   options['region'] = 'TW';
@@ -41,7 +39,6 @@ function drawMap() {
 };
 
 function setMap(){  
-  console.log("setMap");
   map['高雄市']='Kaohsiung City';
   map['新北市']='New Taipei City';
   map['臺中市']='Taichung City';
@@ -69,7 +66,6 @@ function setMap(){
 }
 
 function transformDataArr(){
-  console.log("transformDataArr");
   for(i=0;i<dataArr.length;i++){
     dataArr[i].unshift(map[dataArr[i][1]]);
   }
