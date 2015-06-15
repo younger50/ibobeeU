@@ -3,12 +3,16 @@ var request = require('request');
 var router = express.Router();
 
 
-var map;
+var cityCount;
+var nameCount;
+var religionCount;
 var thisRes;
 
 
-router.post('/city', function(req,res,next){
-  map={};
+router.post('/deity', function(req,res,next){
+  cityCount     = {};
+  nameCount     = {};
+  religionCount = {};
   words = req.body.words;
   console.log("words:"+words);
   findTempleByWords(words);
@@ -20,7 +24,6 @@ router.post('/city', function(req,res,next){
 
 
 function findTempleByWords(words){
-  //request({url:"http://www.csie.ntu.edu.tw/~b99902093/ibobeeu/phpMongo4.php?name="+encodeURI(words)},
   collection  = "dbtemples";
   query       = "{\"deity\":{\"\$regex\":\""+words+"\"}}"
   php_db      = require('../utilities/php_db.js');
@@ -30,11 +33,21 @@ function findTempleByWords(words){
       if (!error && response.statusCode == 200) {
         temples = JSON.parse(body);
         for(i=0;i<temples.length;i++){
-          if(map[temples[i].city]==null){map[temples[i].city]=1;}
-          else{map[temples[i].city]++;}
+          if(cityCount[temples[i].city]==null){cityCount[temples[i].city]=1;}
+          else{cityCount[temples[i].city]++;}
+
+          if(nameCount[temples[i].deity]==null){nameCount[temples[i].deity]=1;}
+          else{nameCount[temples[i].deity]++;}
+
+          if(religionCount[temples[i].religion]==null){religionCount[temples[i].religion]=1;}
+          else{religionCount[temples[i].religion]++;}
+
         }
-        console.log(map);
-        thisRes.send(JSON.stringify(map));
+        console.log(cityCount);
+        console.log(nameCount);
+        console.log(religionCount);
+        responseArr=[cityCount,religionCount,nameCount];
+        thisRes.send(JSON.stringify(responseArr));
       }
       else{
         console.log("error:findTempleByWords");

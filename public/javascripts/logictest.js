@@ -101,7 +101,6 @@ $(document).ready(function () {
 	/*-後分類-*/
 	//deity name
 	$("#sortsrch1").click( function (){
-		console.log("YA~~~~~~~~~");
 		console.log($("#sortname").val());
 
 		$.post("/test/data/postclassification/city",
@@ -112,18 +111,47 @@ $(document).ready(function () {
 				//$("#returnmap").html(data);
 				//$("#returncity").html(data);
 				//$("#returnregion").html(data);
-				$("#returnreligion").html(data);
-				$("#returnnames").html(data);
-				//set taiwan map
+				//$("#returnreligion").html(data);
+				//$("#returnnames").html(data);
+				
 				console.log(data);
+				requestArr = JSON.parse(data);
 
-				//var arr2 = [['臺南市',300],['臺北市',100],['臺中市',200]];
-				//console.log(arr2);
-				arrjson = data.replace("{","[[").replace("}","]]").replace(/,\"/g,"],[\"").replace(/:/g,",");
-				arr = JSON.parse(arrjson);
-                console.log(arr);
-                showGeomap(arr);
+				cityCount 		= requestArr[0];
+				religionCount 	= requestArr[1];
+				nameCount 		= requestArr[2];
+
+				//update taiwan map
+				var cityCountArr=[];
+                for(var k in cityCount){
+                	cityCountArr.push([k,cityCount[k]]);	
+                }
+                showGeomap(cityCountArr);
                 drawMap();
+
+                //update religions
+                religionHtml="<thead><tr><th>教派</th><th>出現次數</th></tr></thead><tbody>";
+                for(var k in religionCount){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	religionHtml = religionHtml.concat("<tr><td>"+k+"</td><td>"+religionCount[k]+"</td></tr>");
+                }
+                religionHtml = religionHtml.concat("</tbody>");
+                $("#returnreligion").html(religionHtml);
+
+
+                //update related names
+                nameHtml="<thead><tr><th>名稱</th><th>出現次數</th></tr></thead><tbody>";
+                for(var k in nameCount){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	nameHtml = nameHtml.concat("<tr><td>"+k+"</td><td>"+nameCount[k]+"</td></tr>");
+                }
+                nameHtml = nameHtml.concat("</tbody>");
+                $("#returnnames").html(nameHtml);
+
+
+
+
+
 			}
 		);
 	});
