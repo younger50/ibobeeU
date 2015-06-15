@@ -101,17 +101,29 @@ $(document).ready(function () {
 	/*-後分類-*/
 	//deity name
 	$("#sortsrch1").click( function (){
-		$.post("/data/deity/findbyscenario",
+		console.log("YA~~~~~~~~~");
+		console.log($("#sortname").val());
+
+		$.post("/test/data/postclassification/city",
 			{
 				words:""+$("#sortname").val()
 			}, 
 			function(data,status){
-				$("#returnmap").html(data);
-				$("#returncity").html(data);
-				$("#returnregion").html(data);
+				//$("#returnmap").html(data);
+				//$("#returncity").html(data);
+				//$("#returnregion").html(data);
 				$("#returnreligion").html(data);
 				$("#returnnames").html(data);
+				//set taiwan map
 				console.log(data);
+
+				//var arr2 = [['臺南市',300],['臺北市',100],['臺中市',200]];
+				//console.log(arr2);
+				arrjson = data.replace("{","[[").replace("}","]]").replace(/,\"/g,"],[\"").replace(/:/g,",");
+				arr = JSON.parse(arrjson);
+                console.log(arr);
+                showGeomap(arr);
+                drawMap();
 			}
 		);
 	});
