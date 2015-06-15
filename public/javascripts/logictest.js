@@ -101,19 +101,15 @@ $(document).ready(function () {
 	/*-後分類-*/
 	//deity name
 	$("#sortsrch1").click( function (){
+		$("#religionblock").show();
+		$("#nameblock").show();
 		console.log($("#sortname").val());
 
 		$.post("/test/data/postclassification/deity",
 			{
 				words:""+$("#sortname").val()
 			}, 
-			function(data,status){
-				//$("#returnmap").html(data);
-				//$("#returncity").html(data);
-				//$("#returnregion").html(data);
-				//$("#returnreligion").html(data);
-				//$("#returnnames").html(data);
-				
+			function(data,status){				
 				console.log(data);
 				requestArr = JSON.parse(data);
 
@@ -157,33 +153,70 @@ $(document).ready(function () {
 	});
 	//temple
 	$("#sortsrch2").click( function (){
-		$.post("/data/deity/findbyscenario",
+		$("#religionblock").show();
+		$("#nameblock").show();
+		console.log($("#sorttemple").val());
+		$.post("/test/data/postclassification/temple",
 			{
 				words:""+$("#sorttemple").val()
 			}, 
 			function(data,status){
-				$("#returnmap").html(data);
-				$("#returncity").html(data);
-				$("#returnregion").html(data);
-				$("#returnreligion").html(data);
-				$("#returnnames").html(data);
 				console.log(data);
+				requestArr = JSON.parse(data);
+
+				cityCount 		= requestArr[0];
+				religionCount 	= requestArr[1];
+				nameCount 		= requestArr[2];
+
+				//update taiwan map
+				var cityCountArr=[];
+                for(var k in cityCount){
+                	cityCountArr.push([k,cityCount[k]]);	
+                }
+                showGeomap(cityCountArr);
+                drawMap();
+
+                //update religions
+                religionHtml="<thead><tr><th>教派</th><th>出現次數</th></tr></thead><tbody>";
+                for(var k in religionCount){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	religionHtml = religionHtml.concat("<tr><td>"+k+"</td><td>"+religionCount[k]+"</td></tr>");
+                }
+                religionHtml = religionHtml.concat("</tbody>");
+                $("#returnreligion").html(religionHtml);
+
+
+                //update related names
+                nameHtml="<thead><tr><th>名稱</th><th>出現次數</th></tr></thead><tbody>";
+                for(var k in nameCount){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	nameHtml = nameHtml.concat("<tr><td>"+k+"</td><td>"+nameCount[k]+"</td></tr>");
+                }
+                nameHtml = nameHtml.concat("</tbody>");
+                $("#returnnames").html(nameHtml);
 			}
 		);
 	});
 	//religion
 	$("#sortsrch3").click( function (){
-		$.post("/data/deity/findbyscenario",
+		console.log($("#sortreligion").val());
+		$("#religionblock").hide();
+		$("#nameblock").hide();
+		$.post("/test/data/postclassification/religion",
 			{
 				words:""+$("#sortreligion").val()
 			}, 
 			function(data,status){
-				$("#returnmap").html(data);
-				$("#returncity").html(data);
-				$("#returnregion").html(data);
-				$("#returnreligion").html(data);
-				$("#returnnames").html(data);
-				console.log(data);
+				requestArr = JSON.parse(data);
+				cityCount 		= requestArr[0];
+				//update taiwan map
+				var cityCountArr=[];
+                for(var k in cityCount){
+                	cityCountArr.push([k,cityCount[k]]);	
+                }
+                showGeomap(cityCountArr);
+                drawMap();
+
 			}
 		);
 	});

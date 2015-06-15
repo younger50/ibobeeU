@@ -12,6 +12,8 @@ var dbviews = require('./routes/dbmongolab');
 //var dbpressureTest = require('./routes/mongoPressureTest');
 var dbtemple = require('./routes/dbtemple');
 var dbpostclassification = require('./routes/dbpostclassification');
+var dbpostclassification_temple = require('./routes/dbpostclassification_temple');
+var dbpostclassification_religion = require('./routes/dbpostclassification_religion');
 
 var app = express();
  
@@ -30,6 +32,8 @@ app.use('/users', users);
 app.use('/data', dbviews);
 app.use('/data/temple', dbtemple);
 app.use('/test/data/postclassification', dbpostclassification);
+app.use('/test/data/postclassification', dbpostclassification_temple);
+app.use('/test/data/postclassification', dbpostclassification_religion);
 //app.use('/pressureTest', dbpressureTest);
 
 // catch 404 and forward to error handler
