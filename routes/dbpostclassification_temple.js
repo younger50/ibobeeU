@@ -35,8 +35,8 @@ function findTempleByWords(words){
           if(cityCount[temples[i].city]==null){cityCount[temples[i].city]=1;}
           else{cityCount[temples[i].city]++;}
 
-          if(nameCount[temples[i].deity]==null){nameCount[temples[i].deity]=1;}
-          else{nameCount[temples[i].deity]++;}
+          if(nameCount[temples[i].name]==null){nameCount[temples[i].name]=1;}
+          else{nameCount[temples[i].name]++;}
 
           if(religionCount[temples[i].religion]==null){religionCount[temples[i].religion]=1;}
           else{religionCount[temples[i].religion]++;}
