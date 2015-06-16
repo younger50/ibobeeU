@@ -15,8 +15,8 @@ function initialize() {
   var panoramaOptions = {
     position: location,
     pov: {
-      heading: 34,
-      pitch: 10
+      heading: 90,
+      pitch: 20
     }
   };
   var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);

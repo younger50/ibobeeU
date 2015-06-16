@@ -9,5 +9,8 @@ $(document).ready(function () {
 	longitude = 121.540014;
 	// insert detail info into page
 	$("#detail_address").html(address);
+	$("#detail_religion").html(religion);
+	$("#detail_deity").html(deity);
+	$("#detail_phone").html(phone);
 	showStreetView(latitude,longitude);
 });
