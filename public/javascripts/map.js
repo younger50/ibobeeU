@@ -1,46 +1,80 @@
-var map;
-var markersArray = [];
+$(document).ready(function () {
 
-function initialize() {
+	var map;
+	var markersArray = [];
+	var flag = 0;
+
+	function initialize() {
 	var mapCanvas = document.getElementById('map-canvas');
-    var mapOptions = {
-      center: new google.maps.LatLng(25.017358, 121.540014),
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    map = new google.maps.Map(mapCanvas, mapOptions);
+	var mapOptions = {
+	  center: new google.maps.LatLng(25.017358, 121.540014),
+	  zoom: 14,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	map = new google.maps.Map(mapCanvas, mapOptions);
 
 	google.maps.event.addListener(map, 'bounds_changed', function() {
-    	update(map);
+		update(map);
 	});
-}
-google.maps.event.addDomListener(window, 'load', initialize);
 
-function update(map){
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function update(map){
 	//send request with boundary, get array of temples. get temple coordinates
-	clear_markers(map);
-	console.log("update");
+	//clear_markers(map);
+	
 	var bound = map.getBounds();
-	var SWlat = bound.getSouthWest().lat;
-	var NElat = bound.getNorthEast().lat;
-	var SWlng = bound.getSouthWest().lng;
-	var NElng = bound.getNorthEast().lng;
-	/*for(number of temples within boundary){
-		var lat, long;
-		var pos = new google.maps.LatLng(lat, long);
-		place_marker(pos, map);
-	}*/
-}
-function place_marker(position, map){
-	var marker = new google.maps.Marker({
-    	position: position,
-    	map: map
-	});
-	markersArray.push(marker);
-}
-function clear_markers(){
+
+	
+
+	SWlat = bound.getSouthWest().lat();
+	NElat = bound.getNorthEast().lat();
+	SWlng = bound.getSouthWest().lng();
+	NElng = bound.getNorthEast().lng();
+
+	//alert(SWlng+" "+NElng+" "+SWlat+" "+NElat);
+
+	$.post("/test/data/findTemplesByRange/",
+		{
+			//words:""+$("#sortreligion").val()
+			bound: ""+SWlng+" "+NElng+" "+SWlat+" "+NElat
+		}, 
+		function(data,status){
+			//console.log(data);
+			for(var i = 0; i < data.length; i++){
+				//console.log(data[i].latitude+" "+data[i].longitude);
+				var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+				place_marker(pos, map, data[i]);
+			}
+
+		}
+	);
+	}
+	var last_open;
+	function place_marker(position, map, templejson){
+		var marker = new google.maps.Marker({
+			position: position,
+			map: map
+		});
+		var contentString = '<div>'+templejson.name+'</div>';
+		var infowindow = new google.maps.InfoWindow({
+      		content: contentString
+  		});
+		markersArray.push(marker);
+		google.maps.event.addListener(marker, 'click', function() {
+			if (last_open != undefined){
+				last_open.close();
+			}
+			last_open = infowindow;
+			infowindow.open(map,marker);
+		});
+	}
+	function clear_markers(){
 	for(var i =0; i < markersArray.length; i++){
 		markersArray[i].setMap(null);
 	}
 	markersArray.length = 0;
-}
+	}
+
+});

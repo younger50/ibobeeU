@@ -1,7 +1,7 @@
 
 var request = require('request');
 
-
+//findTemplesByRange(121.7,121.9,23.5,24.5);
 function findTemplesByRange(lon1,lon2,lat1,lat2){
   //make lon2>lon1 and lat2 > lat1
   if(lon1>lon2){
@@ -31,13 +31,6 @@ function findTemplesByRange(lon1,lon2,lat1,lat2){
       }
     }
   );
-
-
 }
 
-
 //{"longitude":{"$gte":121.7,"$lte":121.9},"latitude":{"$gte":23.5,"$lte":24.5}}
-
-
-
-
