@@ -97,7 +97,7 @@ $(document).ready(function () {
 	/*--Diety Search--*/
 	//Keyword
 	$("#dietysrch1").click( function (){
-		$.post("/data/deity/deitykey",
+		$.post("/data/deity/deity",
 			{
 				words:""+$("#dietykey").val()
 			}, 
@@ -113,14 +113,28 @@ $(document).ready(function () {
 	});
 	//Scenario
 	$("#dietysrch2").click( function (){
-		$.post("/data/deity/findbyscenario",
+		$.post("/data/deity/scenario",
 			{
 				words:""+$("#deityscene").val()
 			}, 
 			function(data,status){
-				$("#da").html("return deities by scenario");
+				//$("#da").html("return deities by scenario");
+				//$("#scenarioResult").html(data);
 				console.log(data);
-			}
+
+				request = JSON.parse(data);
+				//result="<thead><tr><th>名稱</th></tr></thead><tbody>";
+				result="";
+                for(i=0;i<request.length;i++){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	result += (request[i].name+"<br>");}
+              
+                //result = result.concat("</tbody>");
+                console.log("result:"+result);
+                $("#scenarioResult").html(result);
+                $("#dataView1").html(result);
+            }
+			
 		);
 	});
 });
