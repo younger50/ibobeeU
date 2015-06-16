@@ -16,6 +16,7 @@ $(document).ready(function () {
 			}, 
 			function(data,status){
 				$("#dataView1").html( data);
+				insert_temple_to_session( JSON.parse(data)[0]);
 				console.log(data);
 			}
 		);
@@ -29,6 +30,7 @@ $(document).ready(function () {
 			}, 
 			function(data,status){
 				$("#dataView1").html( data);
+				insert_temple_to_session( JSON.parse(data)[0]);
 				console.log(data);
 			}
 		);
@@ -42,6 +44,7 @@ $(document).ready(function () {
 			}, 
 			function(data,status){
 				$("#dataView1").html( data);
+				insert_temple_to_session( JSON.parse(data)[0]);
 				console.log(data);
 			}
 		);
