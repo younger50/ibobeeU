@@ -5,6 +5,7 @@ $(document).ready(function () {
 	$("#sortsrch1").click( function (){
 		$("#religionblock").show();
 		$("#nameblock").show();
+		$("#deityblock").hide();
 		console.log($("#sortname").val());
 
 		$.post("/test/data/postclassification/deity",
@@ -62,6 +63,7 @@ $(document).ready(function () {
 	$("#sortsrch2").click( function (){
 		$("#religionblock").show();
 		$("#nameblock").show();
+		$("#deityblock").show();
 		console.log($("#sorttemple").val());
 		$.post("/test/data/postclassification/temple",
 			{
@@ -74,6 +76,7 @@ $(document).ready(function () {
 				cityCount 		= requestArr[0];
 				religionCount 	= requestArr[1];
 				nameCount 		= requestArr[2];
+				deityCount		= requestArr[3];
 
 				//update taiwan map
 				var cityCountArr=[];
@@ -106,6 +109,16 @@ $(document).ready(function () {
                 }
                 nameHtml = nameHtml.concat("</tbody>");
                 $("#returnnames").html(nameHtml);
+
+                //update related deities
+                nameHtml="<thead><tr><th>名稱</th><th>出現次數</th></tr></thead><tbody>";
+                for(var k in deityCount){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	nameHtml = nameHtml.concat("<tr><td>"+k+"</td><td>"+deityCount[k]+"</td></tr>");
+                }
+                nameHtml = nameHtml.concat("</tbody>");
+                $("#returndeities").html(nameHtml);
+
 			}
 		);
 	});
@@ -114,6 +127,7 @@ $(document).ready(function () {
 		console.log($("#sortreligion").val());
 		$("#religionblock").hide();
 		$("#nameblock").hide();
+		$("#deityblock").hide();
 		$.post("/test/data/postclassification/religion",
 			{
 				words:""+$("#sortreligion").val()
