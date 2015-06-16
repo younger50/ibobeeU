@@ -4,6 +4,9 @@
 var dataArr2;
 function showChart(arr2){
   dataArr2=arr2;
+  dataArr2.sort(function(a,b){
+    return b[1]-a[1];
+  });
   dataArr2.unshift(['City','相關廟宇數']);
   console.log(dataArr2);
 }
