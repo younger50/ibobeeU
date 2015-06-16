@@ -132,7 +132,30 @@ $(document).ready(function () {
                 //result = result.concat("</tbody>");
                 console.log("result:"+result);
                 $("#scenarioResult").html(result);
-                $("#dataView1").html(result);
+            }
+			
+		);
+	});
+		$("#dietysrch3").click( function (){
+		$.post("/data/deity/scenario",
+			{
+				words:""+$("#deityjob").val()
+			}, 
+			function(data,status){
+				//$("#da").html("return deities by scenario");
+				//$("#scenarioResult").html(data);
+				console.log(data);
+
+				request = JSON.parse(data);
+				//result="<thead><tr><th>名稱</th></tr></thead><tbody>";
+				result="";
+                for(i=0;i<request.length;i++){
+                	//nameCountArr.push([k,nameCount[k]]);	
+                	result += (request[i].name+"<br>");}
+              
+                //result = result.concat("</tbody>");
+                console.log("result:"+result);
+                $("#scenarioResult").html(result);
             }
 			
 		);
