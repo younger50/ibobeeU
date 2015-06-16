@@ -16,8 +16,13 @@ $(document).ready(function () {
 			}, 
 			function(data,status){
 				$("#dataView1").html( data);
-				insert_temple_to_session( JSON.parse(data)[0]);
 				console.log(data);
+				data = JSON.parse(data);
+				clear_markers();
+				for (var i = data.length - 1; i >= 0; i--) {
+					var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+					place_marker( pos, map, data[i]);
+				};
 			}
 		);
 	});
@@ -30,8 +35,13 @@ $(document).ready(function () {
 			}, 
 			function(data,status){
 				$("#dataView1").html( data);
-				insert_temple_to_session( JSON.parse(data)[0]);
 				console.log(data);
+				data = JSON.parse(data);
+				clear_markers();
+				for (var i = data.length - 1; i >= 0; i--) {
+					var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+					place_marker( pos, map, data[i]);
+				};
 			}
 		);
 	});
@@ -75,6 +85,12 @@ $(document).ready(function () {
 			function(data,status){
 				$("#dataView1").html("return by date range");
 				console.log(data);
+				data = JSON.parse(data);
+				clear_markers();
+				for (var i = data.length - 1; i >= 0; i--) {
+					var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+					place_marker( pos, map, data[i]);
+				};
 			}
 		);
 	});

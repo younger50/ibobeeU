@@ -32,7 +32,7 @@ router.post('/findadrs', function (req, res, next) {
           }
         }
         body = JSON.stringify(body);
-        console.log(body);
+        console.log(body.length);
         res.send(body);
       }
       else{
@@ -67,7 +67,7 @@ router.post('/findkey', function (req, res, next) {
           }
         }
         body = JSON.stringify(body);
-        console.log(body);
+        console.log(body.length);
         res.send(body);
       }
       else{
@@ -78,7 +78,6 @@ router.post('/findkey', function (req, res, next) {
 
 // POST db find by key area
 router.post('/findarea', function (req, res, next) {
-  date = new Date();
   console.log(req.body);
   res.send("dbtmeple findbyarea");
 });
