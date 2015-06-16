@@ -14,6 +14,7 @@ var dbtemple = require('./routes/dbtemple');
 var dbpostclassification = require('./routes/dbpostclassification');
 var dbpostclassification_temple = require('./routes/dbpostclassification_temple');
 var dbpostclassification_religion = require('./routes/dbpostclassification_religion');
+var dbpostfindTemplesByRange = require('./routes/dbpostfindTemplesByRange');
 
 var app = express();
  
@@ -34,6 +35,7 @@ app.use('/data/temple', dbtemple);
 app.use('/test/data/postclassification', dbpostclassification);
 app.use('/test/data/postclassification', dbpostclassification_temple);
 app.use('/test/data/postclassification', dbpostclassification_religion);
+app.use('/test/data/findTemplesByRange', dbpostfindTemplesByRange);
 //app.use('/pressureTest', dbpressureTest);
 
 // catch 404 and forward to error handler
