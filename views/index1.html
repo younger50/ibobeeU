@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="/stylesheets/bootstrap-select.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap-datepicker.css">
 
+    <link rel="stylesheet" href="/dist/vis.css">
+    <link rel="stylesheet" href="/dist/vis.min.css">
+
 
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
@@ -31,6 +34,10 @@
 
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="/javascripts/map.js"></script>
+
+    <script src="/dist/vis.js"></script>
+    <script src="/dist/vis.min.js"></script>
+    <script src="/javascripts/timeline.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -320,7 +327,9 @@
                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <a href="#">
-                                    <img class="img-responsive portfolio-item" src="http://placehold.it/1200x200" alt="">
+                                    <!--<img class="img-responsive portfolio-item" src="http://placehold.it/1200x200" alt=""> -->
+                                    <div id="timelineVisual"></div>
+
                                 </a>
                             </div>
                         </div>
