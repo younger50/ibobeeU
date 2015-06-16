@@ -1,32 +1,26 @@
-$(document).ready(function () {
+var map;
+var markersArray = [];
 
-	var map;
-	var markersArray = [];
-	var flag = 0;
-
-	function initialize() {
+function initialize() {
 	var mapCanvas = document.getElementById('map-canvas');
 	var mapOptions = {
-	  center: new google.maps.LatLng(25.017358, 121.540014),
-	  zoom: 14,
+	  center: new google.maps.LatLng(23.8, 120),
+	  zoom: 7,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
-	map = new google.maps.Map(mapCanvas, mapOptions);
 
+	map = new google.maps.Map(mapCanvas, mapOptions);
 	google.maps.event.addListener(map, 'bounds_changed', function() {
 		update(map);
 	});
+}
+google.maps.event.addDomListener(window, 'load', initialize);
 
-	}
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-	function update(map){
+function update(map){
 	//send request with boundary, get array of temples. get temple coordinates
 	//clear_markers(map);
-	
-	var bound = map.getBounds();
 
-	
+	var bound = map.getBounds();
 
 	SWlat = bound.getSouthWest().lat();
 	NElat = bound.getNorthEast().lat();
@@ -34,7 +28,7 @@ $(document).ready(function () {
 	NElng = bound.getNorthEast().lng();
 
 	//alert(SWlng+" "+NElng+" "+SWlat+" "+NElat);
-
+	/*
 	$.post("/test/data/findTemplesByRange/",
 		{
 			//words:""+$("#sortreligion").val()
@@ -50,31 +44,32 @@ $(document).ready(function () {
 
 		}
 	);
-	}
-	var last_open;
-	function place_marker(position, map, templejson){
-		var marker = new google.maps.Marker({
-			position: position,
-			map: map
+	*/
+}
+var last_open;
+function place_marker(position, map, templejson){
+	var marker = new google.maps.Marker({
+		position: position,
+		map: map
+	});
+	var contentString = '<div>'+templejson.name+'</div>';
+	var infowindow = new google.maps.InfoWindow({
+  		content: contentString
 		});
-		var contentString = '<div>'+templejson.name+'</div>';
-		var infowindow = new google.maps.InfoWindow({
-      		content: contentString
-  		});
-		markersArray.push(marker);
-		google.maps.event.addListener(marker, 'click', function() {
-			if (last_open != undefined){
-				last_open.close();
-			}
-			last_open = infowindow;
-			infowindow.open(map,marker);
-		});
-	}
-	function clear_markers(){
+	markersArray.push(marker);
+	google.maps.event.addListener(marker, 'click', function() {
+		if (last_open != undefined){
+			last_open.close();
+		}
+		last_open = infowindow;
+		infowindow.open(map,marker);
+		insert_temple_to_session( templejson);
+	});
+}
+function clear_markers(){
 	for(var i =0; i < markersArray.length; i++){
 		markersArray[i].setMap(null);
 	}
 	markersArray.length = 0;
-	}
+}
 
-});
