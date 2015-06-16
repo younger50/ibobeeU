@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
 	if(sessionStorage.homecount){
 		sessionStorage.homecount = Number(sessionStorage.homecount)+1;
 	}

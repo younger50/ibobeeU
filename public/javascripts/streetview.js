@@ -12,7 +12,6 @@ var lat;
 var lng;
 function initialize() {
   var location = new google.maps.LatLng(lat, lng);
-
   var panoramaOptions = {
     position: location,
     pov: {
@@ -27,18 +26,7 @@ function initialize() {
 function showStreetView(latitude,longitude){
   lat=latitude;
   lng=longitude;
-  google.maps.event.addDomListener(window, 'load', initialize);
+  initialize();
 }
-function loadScript() {
-  var script   = document.createElement('script');
-  var script2  = document.createElement('script2');
-  script.type  = 'text/javascript';
-  script2.type = 'text/javascript';
-  script.src   = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +'&signed_in=true&callback=initialize';
-  document.body.appendChild(script);
-  document.body.appendChild(script2);
-}
-window.onload = loadScript;
 
-
-
+google.maps.event.addDomListener(window, 'load', initialize);
