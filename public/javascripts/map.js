@@ -52,7 +52,7 @@ function place_marker(position, map, templejson){
 		position: position,
 		map: map
 	});
-	var contentString = '<div>'+templejson.name+'</div>';
+	var contentString = '<a href=\"/individual\">'+templejson.name+'</a>';
 	var infowindow = new google.maps.InfoWindow({
   		content: contentString
 		});
