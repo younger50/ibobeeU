@@ -2,9 +2,6 @@ var express = require('express');
 
 // acceess mongolab by REST API
 var request = require('request');
-var api_key = "sazUWtXlKYRLcswVw_i6BYQV8Ia6tyE5";
-var api_raw_url = "https://api.mongolab.com/api/1/databases/ibbu-mongo1/collections/dbtemples";
-var api_url = api_raw_url+"?apiKey="+api_key;
 var router = express.Router();
 
 // POST db find by address
@@ -59,7 +56,7 @@ router.post('/findkey', function (req, res, next) {
         body = JSON.parse(body);
         for (var i = 0; i < body.length; i++) {
           item = body[i];
-          if(item.address){
+          if(item.name){
             if(item.name.indexOf(words)>-1){
               //console.log(item);
             }
@@ -96,8 +93,8 @@ router.post('/findarea', function (req, res, next) {
         body = JSON.parse(body);
         for (var i = 0; i < body.length; i++) {
           item = body[i];
-          if(item.address){
-            if(item.name.indexOf(words)>-1){
+          if(item.city){
+            if(item.city.indexOf(words)>-1){
               //console.log(item);
             }
             else{
