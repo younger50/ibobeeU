@@ -16,10 +16,10 @@ router.get('/', function(req, res, next) {
 	res.sendFile( fileName, options);
 });
 
-router.get('/test', function(req, res, next) {
+router.get('/class', function(req, res, next) {
 	//res.send("hi");
 	var options = {root: __dirname + '/../views/'}
-	var fileName = 'test.html';
+	var fileName = 'class.html';
 	res.sendFile( fileName, options);
 });
 
