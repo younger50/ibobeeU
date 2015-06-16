@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$("#dataView1").html("test");
+	$("#dataView1").html("test:"+sessionStorage.homecount);
 	/*-後分類-*/
 	//deity name
 	$("#sortsrch1").click( function (){

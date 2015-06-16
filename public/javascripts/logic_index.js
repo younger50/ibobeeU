@@ -1,5 +1,12 @@
 $(document).ready(function () {
-	$("#dataView1").html("test");
+
+	if(sessionStorage.homecount){
+		sessionStorage.homecount = Number(sessionStorage.homecount)+1;
+	}
+	else{
+		sessionStorage.homecount = 1;
+	}
+	$("#dataView1").html("test:"+sessionStorage.homecount);
 	/*--TEMPLE SEARCH--*/
 	//Search Address
 	$("#templesrch1").click( function(){
