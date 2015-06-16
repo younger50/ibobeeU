@@ -29,8 +29,9 @@ function setMap(){
   map['新北市']='New Taipei City';
   map['臺中市']='Taichung City';
   map['臺南市']='Tainan City';
-  map['桃園市']='Taoyuan City';
+  map['桃園市']='Taoyuan County';
 
+  map['桃園縣']='Taoyuan County';
   map['彰化縣']='Changhua';
   map['嘉義縣']='TW-CYQ';
   map['嘉義市']='TW-CYI';
