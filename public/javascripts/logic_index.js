@@ -103,7 +103,15 @@ $(document).ready(function () {
 			}, 
 			function(data,status){
 				$("#dataView1").html("return diety by keword");
+	
 				console.log(data);
+				data = JSON.parse(data);
+				clear_markers();
+				for (var i = data.length - 1; i >= 0; i--) {
+					var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+					place_marker( pos, map, data[i]);
+				};
+
 			}
 		);
 		/*$.getJSON("/data/db", function(data){
