@@ -99,25 +99,10 @@ $(document).ready(function () {
 		);
 	});
 	/*--Diety Search--*/
+	//
 	//Keyword
 	$("#dietysrch1").click( function (){
-		$.post("/data/deity/deity",
-			{
-				words:""+$("#dietykey").val()
-			}, 
-			function(data,status){
-				$("#dataView1").html("return diety by keword");
-	
-				console.log(data);
-				data = JSON.parse(data);
-				clear_markers();
-				for (var i = data.length - 1; i >= 0; i--) {
-					var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
-					place_marker( pos, map, data[i]);
-				};
-
-			}
-		);
+		search_by_deity( $("#dietykey").val());
 		/*$.getJSON("/data/db", function(data){
 			$("#dataView1").html(JSON.stringify(data));
 			console.log(data);
@@ -139,13 +124,13 @@ $(document).ready(function () {
 				result="";
                 for(i=0;i<request.length;i++){
                 	//nameCountArr.push([k,nameCount[k]]);	
-                	result += (request[i].name+"<br>");}
+                	result += ("<a href=\"#\" onclick=\"search_by_deity(\'"+request[i].name+"\')\">"+request[i].name+"</a><br>");
+                }
               
                 //result = result.concat("</tbody>");
                 console.log("result:"+result);
                 $("#scenarioResult").html(result);
-            }
-			
+            }			
 		);
 	});
 		$("#dietysrch3").click( function (){
@@ -163,7 +148,8 @@ $(document).ready(function () {
 				result="";
                 for(i=0;i<request.length;i++){
                 	//nameCountArr.push([k,nameCount[k]]);	
-                	result += (request[i].name+"<br>");}
+                	result += ("<a href=\"#\" onclick=\"search_by_deity(\'"+request[i].name+"\')\">"+request[i].name+"</a><br>");
+                }
               
                 //result = result.concat("</tbody>");
                 console.log("result:"+result);
@@ -174,6 +160,26 @@ $(document).ready(function () {
 	});
 });
 
+// deity link function
+function search_by_deity( dname){
+	$.post("/data/deity/deity",
+		{
+			words:""+dname
+		}, 
+		function(data,status){
+			$("#dataView1").html("return diety by keword");
+
+			console.log(data);
+			data = JSON.parse(data);
+			clear_markers();
+			for (var i = data.length - 1; i >= 0; i--) {
+				var pos = new google.maps.LatLng(data[i].latitude, data[i].longitude);
+				place_marker( pos, map, data[i]);
+			};
+
+		}
+	);
+}
 
  /*--
         地址 ID: templeadrs
