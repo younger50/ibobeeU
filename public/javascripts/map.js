@@ -10,9 +10,9 @@ function initialize() {
 	}
 
 	map = new google.maps.Map(mapCanvas, mapOptions);
-	google.maps.event.addListener(map, 'bounds_changed', function() {
-		update(map);
-	});
+	//google.maps.event.addListener(map, 'bounds_changed', function() {
+	//	update(map);
+	//});
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
