@@ -1,3 +1,6 @@
+Introduction:
+Final project of "Introduction to Digital Humanities" 2015 at NTU CSIE
+
 App url:
 https://ibobee-2015.herokuapp.com/
 
